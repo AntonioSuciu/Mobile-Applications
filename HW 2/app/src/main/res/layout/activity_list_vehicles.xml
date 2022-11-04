@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/CTP_grey">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_vehicles_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_marginTop="68dp"
+        app:layout_constraintTop_toBottomOf="@+id/bttn_vehicle_add"
+        tools:layout_editor_absoluteX="-1dp" />
+
+    <Button
+        android:id="@+id/bttn_vehicle_add"
+        android:layout_width="56dp"
+        android:layout_height="66dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="1dp"
+        android:layout_weight="0.5"
+        android:backgroundTint="@color/CTP_purple"
+        android:padding="16dp"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:drawableLeftCompat="@drawable/ic_baseline_add_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

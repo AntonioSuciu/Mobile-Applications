@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CTP Bus Management</string>
+    <string name="photo">Alege poza</string>
+    <string name="line">Linie</string>
+    <string name="startStation">Capăt traseu 1</string>
+    <string name="stopStation">Capăt traseu 2</string>
+    <string name="type">Tip vehicul</string>
+    <string name="save">Salvează</string>
+    <string name="delete">Șterge</string>
+    <string name="add_a_vehicle">Adaugă un vehicul</string>
+</resources>
