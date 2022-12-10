@@ -3,14 +3,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../Domain/vehicle.dart';
 import 'home.dart';
 const ctp_purple = Color(0xFFC150B2);
 
 
 class VehicleEditWidget extends StatefulWidget {
-  final int index;
+  // final int index;
+  final Vehicle vehicle;
 
-  const VehicleEditWidget(this.index, {Key? key}) : super(key: key);
+  // const VehicleEditWidget(this.index, {Key? key}) : super(key: key);
+
+  const VehicleEditWidget(this.vehicle, {Key? key}) : super(key: key);
 
   @override
   State<VehicleEditWidget> createState() => VehicleEditWidgetState();
@@ -50,10 +54,10 @@ class VehicleEditWidgetState extends State<VehicleEditWidget> {
     Widget yesBttn = TextButton(
       child: const Text("DA"),
       onPressed: () {
-        var vehicle = Provider.of<VehicleService>(context, listen: false)
-            .getVehicles()[widget.index];
+        // var vehicle = Provider.of<VehicleService>(context, listen: false)
+        //     .getVehicles()[widget.index];
 
-        Provider.of<VehicleService>(context, listen: false).remove(vehicle.id);
+        Provider.of<VehicleService>(context, listen: false).remove(widget.vehicle.id);
         Navigator.of(context).push(
             MaterialPageRoute<void>(
                 builder: (context) {
@@ -93,13 +97,14 @@ class VehicleEditWidgetState extends State<VehicleEditWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var vehicle = Provider.of<VehicleService>(context, listen: true)
-        .getVehicles()[widget.index];
+    // var vehicle = Provider.of<VehicleService>(context, listen: true)
+    //     .getVehicles()[widget.index];
 
-    var lineNumberController = TextEditingController(text: vehicle.lineNumber);
-    var startStationController = TextEditingController(text: vehicle.startStation);
-    var stopStationController = TextEditingController(text: vehicle.stopStation);
-    var vehicleTypeController = TextEditingController(text: vehicle.vehicleType);
+    var lineNumberController = TextEditingController(text: widget.vehicle.lineNumber);
+    var startStationController = TextEditingController(text: widget.vehicle.startStation);
+    var stopStationController = TextEditingController(text: widget.vehicle.stopStation);
+    var vehicleTypeController = TextEditingController(text: widget. vehicle.vehicleType);
+  /// before: with index and the locally declared vehicle
 
     return Scaffold(
         appBar: AppBar(
@@ -167,9 +172,18 @@ class VehicleEditWidgetState extends State<VehicleEditWidget> {
                   ),
                   onPressed: () {
 
+                    // Provider.of<VehicleService>(context, listen: false)
+                    //     .update(
+                    //     vehicle.id,
+                    //     lineNumberController.text,
+                    //     startStationController.text,
+                    //     stopStationController.text,
+                    //     vehicleTypeController.text
+                    // );
+
                     Provider.of<VehicleService>(context, listen: false)
                         .update(
-                        vehicle.id,
+                        widget.vehicle.id,
                         lineNumberController.text,
                         startStationController.text,
                         stopStationController.text,

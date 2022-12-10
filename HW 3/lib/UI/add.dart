@@ -12,7 +12,6 @@ class VehicleAddPage extends StatelessWidget{
   const VehicleAddPage({Key? key}) : super(key: key);
 
   void showAlertDialog(BuildContext context, String message) {
-    // create the button
     Widget okButton = TextButton(
       child: const Text("OK"),
       onPressed: () {
