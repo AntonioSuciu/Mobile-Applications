@@ -8,22 +8,15 @@ const ctp_purple = Color(0xFFC150B2);
 
 
 class VehicleService extends ChangeNotifier{
-  final VehicleRepository repository;
-
-  VehicleService(this.repository);
-
-
+  late VehicleRepository repository = DatabaseRepository();
+  VehicleService(){
+    //populateVehicles();
+  }
   // VehicleService()
   // {
   //   repository = VehicleRepository();
   //   populateVehicles();
   // }
-
-  static Future<VehicleService> init() async
-  {
-    var repository = await DatabaseRepository.init();
-    return VehicleService(repository);
-  }
 
   // void populateVehicles() {
   //   repository.add(Vehicle(
@@ -56,9 +49,9 @@ class VehicleService extends ChangeNotifier{
     ];
 
     for(int i = 0; i < initialVehicles.length; i++)
-      {
-        repository.add(initialVehicles[i]);
-      }
+    {
+      repository.add(initialVehicles[i]);
+    }
     notifyListeners();
   }
 
