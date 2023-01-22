@@ -32,6 +32,8 @@ dependencies:
   flutter:
     sdk: flutter
   provider:   ^6.0.1
+  http: any
+  connectivity:
   sqflite:
   path:
 

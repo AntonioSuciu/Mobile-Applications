@@ -24,6 +24,8 @@ class DatabaseRepository implements VehicleRepository {
 
     var path = join(databasesPath, 'vehicles.db');
 
+    // print('db location : '+path);
+
     // open db
     var database = await openDatabase(path, version: 1,
         onCreate: (Database db, int version) async {

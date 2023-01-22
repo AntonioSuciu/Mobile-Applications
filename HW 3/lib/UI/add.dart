@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../Domain/vehicle.dart';
+
 const ctp_purple = Color(0xFFC150B2);
 
 
@@ -108,36 +110,72 @@ class VehicleAddPage extends StatelessWidget{
                     ],
                   ),
                 ),
-                onPressed: (){
-                  if(lineController.text == '')
+
+                // onPressed: (){
+                //   if(lineController.text == '')
+                //     {
+                //       showAlertDialog(context, 'Introdu linia!');
+                //       return;
+                //     }
+                //   if(startStationController.text == '')
+                //   {
+                //     showAlertDialog(context, 'Introdu stația de pornire!');
+                //     return;
+                //   }
+                //   if(stopStationController.text == '')
+                //   {
+                //     showAlertDialog(context, 'Introdu stația de oprire!');
+                //     return;
+                //   }
+                //   if(vehicleTypeController.text == '')
+                //   {
+                //     showAlertDialog(context, 'Introdu tipul vehiculului!');
+                //     return;
+                //   }
+                //   Provider.of<VehicleService>(context, listen: false)
+                //       .add(
+                //     lineController.text,
+                //     startStationController.text,
+                //     stopStationController.text,
+                //     vehicleTypeController.text,
+                //   );
+                //   Navigator.pop(context);
+                // },
+                  onPressed: () async {
+                    if(lineController.text == '')
                     {
                       showAlertDialog(context, 'Introdu linia!');
                       return;
                     }
-                  if(startStationController.text == '')
-                  {
-                    showAlertDialog(context, 'Introdu stația de pornire!');
-                    return;
+                    if(startStationController.text == '')
+                    {
+                      showAlertDialog(context, 'Introdu stația de pornire!');
+                      return;
+                    }
+                    if(stopStationController.text == '')
+                    {
+                      showAlertDialog(context, 'Introdu stația de oprire!');
+                      return;
+                    }
+                    if(vehicleTypeController.text == '')
+                    {
+                      showAlertDialog(context, 'Introdu tipul vehiculului!');
+                      return;
+                    }
+                    bool isConnected = await Provider.of<VehicleService>(context, listen: false).isOnline();
+                    if (isConnected) {
+                      // online
+                      Provider.of<VehicleService>(context, listen: false)
+                          .serverRepository
+                          .add(Vehicle(lineController.text, startStationController.text, stopStationController.text, vehicleTypeController.text));
+                    } else {
+                      // offline
+                      Provider.of<VehicleService>(context, listen: false)
+                          .dbRepository
+                          .add(Vehicle(lineController.text, startStationController.text, stopStationController.text, vehicleTypeController.text));
+                    }
+                    Navigator.pop(context);
                   }
-                  if(stopStationController.text == '')
-                  {
-                    showAlertDialog(context, 'Introdu stația de oprire!');
-                    return;
-                  }
-                  if(vehicleTypeController.text == '')
-                  {
-                    showAlertDialog(context, 'Introdu tipul vehiculului!');
-                    return;
-                  }
-                  Provider.of<VehicleService>(context, listen: false)
-                      .add(
-                    lineController.text,
-                    startStationController.text,
-                    stopStationController.text,
-                    vehicleTypeController.text,
-                  );
-                  Navigator.pop(context);
-                },
               ),
             )
 

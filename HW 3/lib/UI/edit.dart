@@ -1,9 +1,9 @@
-import 'package:ctp_bus_management/Service/service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Domain/vehicle.dart';
+import '../Service/service.dart';
 import 'home.dart';
 const ctp_purple = Color(0xFFC150B2);
 
@@ -51,12 +51,26 @@ class VehicleEditWidgetState extends State<VehicleEditWidget> {
     bool cancel = false;
 
     // set up the button
+    // Widget yesBttn = TextButton(
+    //   child: const Text("DA"),
+    //   onPressed: () {
+    //     // var vehicle = Provider.of<VehicleService>(context, listen: false)
+    //     //     .getVehicles()[widget.index];
+    //
+    //     Provider.of<VehicleService>(context, listen: false).remove(widget.vehicle.id);
+    //     Navigator.of(context).push(
+    //         MaterialPageRoute<void>(
+    //             builder: (context) {
+    //               return const HomePageWidget();
+    //             }
+    //         )
+    //     );
+    //   },
+    // );
+
     Widget yesBttn = TextButton(
       child: const Text("DA"),
       onPressed: () {
-        // var vehicle = Provider.of<VehicleService>(context, listen: false)
-        //     .getVehicles()[widget.index];
-
         Provider.of<VehicleService>(context, listen: false).remove(widget.vehicle.id);
         Navigator.of(context).push(
             MaterialPageRoute<void>(
@@ -67,7 +81,6 @@ class VehicleEditWidgetState extends State<VehicleEditWidget> {
         );
       },
     );
-
     Widget cancelBttn = TextButton(
       child: const Text("ANULEAZĂ"),
       onPressed: () {
